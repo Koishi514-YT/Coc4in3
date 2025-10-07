@@ -1,24 +1,25 @@
-import { Client, GatewayIntentBits } from 'discord.js';
+// main.mjs
+import express from "express";
+import { Client, GatewayIntentBits } from "discord.js";
 
-// あなたのBotトークンをここに入れてください
-const token = "MTQyNTAyNjgwMDM2NjY0OTM0NQ.GPjY9d.y97idBXuhILkcqlYOdYI2NeP-3PMak_HEirDsg";
+const app = express();
+const PORT = process.env.PORT || 3000; // ← Koyeb用に環境変数でも対応
 
-// クライアント作成
+app.get("/", (req, res) => {
+  res.send("Bot is running!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Web server is running on port ${PORT}`);
+});
+
+// Discord Botの例
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages]
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
 });
 
-// 起動確認
-client.once('ready', () => {
-  console.log(`✅ ログイン成功: ${client.user.tag}`);
+client.once("ready", () => {
+  console.log(`Logged in as ${client.user.tag}!`);
 });
 
-// メッセージが送られた時の動作
-client.on('messageCreate', message => {
-  if (message.content === '!ping') {
-    message.reply('pong!');
-  }
-});
-
-// ログイン
-client.login(token);
+client.login(process.env.TOKEN); // ← トークンはKoyebの環境変数で設定
