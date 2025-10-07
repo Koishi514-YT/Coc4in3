@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 
 // あなたのBotトークンをここに入れてください
-const token = "MTQyNTAyNjgwMDM2NjY0OTM0NQ.G9BIul.XJ_-q6tT4DN4wbwu6YfqpgyS317Thhb8O__iCE";
+const token = "MTQyNTAyNjgwMDM2NjY0OTM0NQ.GPjY9d.y97idBXuhILkcqlYOdYI2NeP-3PMak_HEirDsg";
 
 // クライアント作成
 const client = new Client({
